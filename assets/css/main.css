@@ -2,26 +2,21 @@
 
 /* Fonts */
 :root {
-  --default-font:  "kalam-regular";
-  --heading-font:  "kalam-regular", "cabin-sketch-bold",  sans-serif;
-  --nav-font: "cabin-sketch-bold", sans-serif ;
-}
-
-.kalam-regular {
-  font-family: "Kalam", cursive;
-  font-weight: 400;
-  font-style: normal;
+  --default-font:  "cabin-sketch-bold", sans-serif;
+  --heading-font:  "cabin-sketch-bold" ,  sans-serif;
+  --nav-font: "cabin-sketch-bold" , sans-serif ;
 }
 
 .cabin-sketch-bold {
   font-family: "Cabin Sketch", sans-serif;
   font-weight: 900;
+  opacity: 1;
   font-style: normal;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #eae8e0; /* Background color for the entire website, including individual sections */
+  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #000000; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #000000a8; /* Color for headings, subheadings and title throughout the website */
   --accent-color: red; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
@@ -31,18 +26,18 @@
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #212529;  /* The default color of the main navmenu links */
+  --nav-color: #000000;  /* The default color of the main navmenu links */
   --nav-hover-color: red; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #212529; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-color: #000000; /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: red; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #eae8e0;
+  --background-color: #ffffff;
   --surface-color: #ffffff;
 }
 
@@ -86,12 +81,12 @@ h4,
 h5,
 h6 {
   color: var(--heading-color);
-  font-family: var(--heading-font);
+  font-family: var(--nav-font);
 }
 
 /* PHP Email Form Messages
 ------------------------------*/
-.php-email-form .error-message {
+/* .php-email-form .error-message {
   display: none;
   background: #df1529;
   color: #ffffff;
@@ -139,7 +134,7 @@ h6 {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Global Header
@@ -157,9 +152,9 @@ h6 {
 .header .header-container {
   background: var(--surface-color);
   border-radius: 40px;
-  border: 2px rgba(0, 0, 0, 0.205) solid;
+  border: 2px rgba(0, 0, 0, 0.15) dotted;
   padding: 8px 35px;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.6);
 }
 
 .scrolled .header .header-container {
