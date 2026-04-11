@@ -26,13 +26,16 @@
    */
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
-  function mobileNavToogle() {
+  function mobileNavToggle() {
     document.querySelector('body').classList.toggle('mobile-nav-active');
     mobileNavToggleBtn.classList.toggle('bi-list');
     mobileNavToggleBtn.classList.toggle('bi-x');
   }
   if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+    mobileNavToggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      mobileNavToggle();
+    });
   }
 
   /**
@@ -41,7 +44,7 @@
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
       if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
+        mobileNavToggle();
       }
     });
 
@@ -172,5 +175,62 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  /**
+   * Magnetic Pull Effect for Buttons
+   */
+  const magneticBtns = document.querySelectorAll('.magnetic-btn');
+
+  magneticBtns.forEach(btn => {
+    btn.addEventListener('mousemove', function(e) {
+      const rect = btn.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const deltaX = mouseX - centerX;
+      const deltaY = mouseY - centerY;
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+      const maxDistance = 100; // pixels
+      if (distance < maxDistance) {
+        const strength = (maxDistance - distance) / maxDistance;
+        const moveX = deltaX * strength * 0.5;
+        const moveY = deltaY * strength * 0.5;
+        const rotate = (deltaX / maxDistance) * 5; // slight tilt
+
+        btn.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${rotate}deg)`;
+      } else {
+        btn.style.transform = 'translate(0, 0) rotate(0deg)';
+      }
+    });
+
+    btn.addEventListener('mouseleave', function() {
+      btn.style.transform = 'translate(0, 0) rotate(0deg)';
+    });
+  });
+
+  /**
+   * Typing Animation for Hero Title
+   */
+  const text = "AI-Powered Dashboard \n built for Students";
+  const typedTextElement = document.getElementById('typed-text');
+  let index = 0;
+
+  function typeWriter() {
+    if (index < text.length) {
+      if (text.charAt(index) === '\n') {
+        typedTextElement.innerHTML += '<br>';
+      } else {
+        typedTextElement.innerHTML += text.charAt(index);
+      }
+      index++;
+      setTimeout(typeWriter, 100); // typing speed
+    }
+  }
+
+  // Start typing after a short delay
+  setTimeout(typeWriter, 1000);
 
 })();

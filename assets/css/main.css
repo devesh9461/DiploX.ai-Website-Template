@@ -2,9 +2,9 @@
 
 /* Fonts */
 :root {
-  --default-font:  "cabin-sketch-bold", sans-serif;
-  --heading-font:  "cabin-sketch-bold" ,  sans-serif;
-  --nav-font: "cabin-sketch-bold" , sans-serif ;
+  --default-font: 'DM Sans', sans-serif;
+  --heading-font: 'Sora', sans-serif;
+  --nav-font: 'Sora', sans-serif;
 }
 
 .cabin-sketch-bold {
@@ -16,22 +16,23 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #000000; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #000000a8; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: red; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff 0.8; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --background-color: #0A0B1A; /* Background color for the entire website, including individual sections */
+  --default-color: #E8E6FF; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #C9B8FF; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #7F77DD; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #12142B; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #E8E6FF; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --text-muted: #8B89B2;
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #000000;  /* The default color of the main navmenu links */
-  --nav-hover-color: red; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #000000; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: red; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #E8E6FF;  /* The default color of the main navmenu links */
+  --nav-hover-color: #7F77DD; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #12142B; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #12142B; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #E8E6FF; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #7F77DD; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -54,14 +55,150 @@
   scroll-behavior: smooth;
 }
 
+/* Cosmic Midnight Theme Animations */
+body {
+  background: #0A0B1A;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Glitch text reveal */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+  animation: glitchReveal 2s ease-in-out;
+}
+
+@keyframes glitchReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(-10px);
+  }
+  50% {
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.glitch-text::before {
+  animation: glitch1 0.5s infinite;
+  color: #7F77DD;
+  z-index: -1;
+}
+
+.glitch-text::after {
+  animation: glitch2 0.5s infinite;
+  color: #C9B8FF;
+  z-index: -2;
+}
+
+@keyframes glitch1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
+/* Floating cards */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(127, 119, 221, 0.3);
+}
+
+/* Staggered fade-up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.fade-up:nth-child(1) { animation-delay: 0.1s; }
+.fade-up:nth-child(2) { animation-delay: 0.2s; }
+.fade-up:nth-child(3) { animation-delay: 0.3s; }
+.fade-up:nth-child(4) { animation-delay: 0.4s; }
+.fade-up:nth-child(5) { animation-delay: 0.5s; }
+.fade-up:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulsing glow CTA button */
+.cta-pulse {
+  position: relative;
+  animation: pulseGlow 2s infinite;
+}
+
+.cta-pulse::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #7F77DD, #C9B8FF);
+  border-radius: inherit;
+  z-index: -1;
+  animation: pulseRing 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(127, 119, 221, 0.5); }
+  50% { box-shadow: 0 0 30px rgba(127, 119, 221, 0.8); }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.1); opacity: 0; }
+}
+
+/* Glass morphism nav */
+.scrolled .header .header-container {
+  background: rgba(18, 20, 43, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 184, 255, 0.1);
+}
+
+/* Magnetic Pull Effect */
+.magnetic-btn {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
-body {
-  color: var(--default-color);
-  background-color: var(--background-color);
-  font-family: var(--default-font);
-}
 
 a {
   color: var(--accent-color);
@@ -167,7 +304,7 @@ h6 {
   padding-left: 10px;
 
   & .sitename{
-    color: #000000;
+    color: var(--heading-color);
     opacity: 1;
   }
 }
@@ -184,10 +321,15 @@ h6 {
   color: var(--heading-color);
 
   & span{
-    color: red;
+    color: var(--accent-color);
     opacity: 1;
     text-decoration: underline;
   }
+}
+
+.header .logo .sitename {
+  font-family: 'Cabin Sketch', cursive;
+  font-weight: 700;
 }
 
 .header .btn-getstarted,
@@ -2370,4 +2512,16 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+/* Typing Cursor Animation */
+.typing-cursor {
+  display: inline-block;
+  animation: blink 0.5s infinite;
+  color: var(--accent-color);
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
