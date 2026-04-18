@@ -212,9 +212,9 @@
   });
 
   /**
-   * Typing Animation for Hero Title
+     Typing Animation for Hero Title
    */
-  const text = "AI-Powered Dashboard \n built for Students";
+  const text = "Improve { CGPA } in exams";
   const typedTextElement = document.getElementById('typed-text');
   let index = 0;
 
@@ -226,11 +226,11 @@
         typedTextElement.innerHTML += text.charAt(index);
       }
       index++;
-      setTimeout(typeWriter, 100); // typing speed
+      setTimeout(typeWriter, 60); // typing speed
     }
   }
 
   // Start typing after a short delay
-  setTimeout(typeWriter, 1000);
+  setTimeout(typeWriter, 1200);
 
 })();
