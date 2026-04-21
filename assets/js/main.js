@@ -214,7 +214,7 @@
   /**
      Typing Animation for Hero Title
    */
-  const text = "Improve { CGPA } in exams";
+  const text = "Try! it for free.. Enjoy..";
   const typedTextElement = document.getElementById('typed-text');
   let index = 0;
 
